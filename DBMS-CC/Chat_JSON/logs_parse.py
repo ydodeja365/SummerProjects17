@@ -15,13 +15,14 @@ names = {'U530UCFTL':'hrily',
 	'U55UDASSV':'bhavishya',
 	'U531L233L':'vilas',
 	'U57A20DSS':'ishaan',
-	'U55UJ9MH7':'rithesh'
+	'U55UJ9MH7':'rithesh',
+	'U52BAR788':'google_zurich',
+	'U5BP61N94':'manish'
 	}
 
 # Open and read the file
-with open('2017-04-29.json') as json_file:
+with open('2017-05-20.json') as json_file:
 	data = json.load(json_file)
 	for p in data:
 		print(names[p['user']] + " : " + p['text'])
 		print("")
-
