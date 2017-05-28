@@ -154,7 +154,7 @@ Time Limit(60s) Exceeded for 10000 elements for selection sort
 Time Limit(60s) Exceeded for 100000 elements for insertion sort
  1000000 elements : 1.577997 seconds by merge sort
 Time Limit(60s) Exceeded for 1000000 elements for quick sort
-Time Limit(60s) Exceeded for 1000000 elements for merge sort
+Time Limit(60s) Exceeded for 10000000 elements for merge sort
 Limit Exceeded 100000000 > 10000000
 
 </pre>
