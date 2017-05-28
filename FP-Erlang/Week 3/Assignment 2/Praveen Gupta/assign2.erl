@@ -11,7 +11,7 @@
 -author("Praveen Gupta").
 %% API
 -export([unique/1, uniq/1, freq/2, replicate/2, rep/2, reverse/1, zip/2, fac/1, fact/1,
-  zipp/2, fib/1, bsort/1, isort/1, ssort/1, msort/1, merge/2, qsort/1, timer/2]).
+  zipp/2, fib/1, bsort/1, isort/1, ssort/1, msort/1, merge/2, qsort/1, randList/1, timer/0]).
 
 %Takes a List and returns the list without repetition of elements.
 unique(X) -> unique(X, []).
@@ -132,6 +132,75 @@ merge([X | XT], [Y | YT]) ->
 qsort([]) -> [];
 qsort([H | T]) -> qsort([X || X <- T, X =< H]) ++ [H] ++ qsort([X || X <- T, X > H]).
 
-%Returns time taken by given function and parameter in microseconds
-timer(Func, Para) -> {T, _} = timer:tc(assign2, Func, [Para]),
-  io:fwrite("~w microseconds~n", [T]).
+
+%Returns a list containing N random elements.
+randList(N) -> randList(N, [], 0).
+randList(N, X, N) -> X;
+randList(N, X, A) -> randList(N, X ++ [rand:uniform(100)], A + 1).
+
+%%mtimer() -> mtimer(1).
+%%mtimer(N) when N > 10000000 -> io:format("Limit Exceeded ~w > 10000000~n", [N]);
+%%mtimer(N) ->
+%%  {T, _} = timer:tc(assign2, msort, [randList(N)]),
+%%  io:format("~w elements took ~f seconds by mergesort~n", [N, T / 1000000]),
+%%  if
+%%    T >= 60000000 -> io:format("Time Limit Exceeded for ~w elements~n", [N]);
+%%    true ->
+%%      mtimer(N * 10)
+%%  end.
+
+%Gives the sorting time for the different search algorithms
+timer() -> timer(1, true, true, true, true, true).
+timer(N, _, _, _, _, _) when N > 10000000 -> io:format("Limit Exceeded ~w > 10000000~n", [N]);
+timer(N, M, Q, I, B, S) -> X = randList(N),
+  if
+    M -> {Tm, _} = timer:tc(assign2, msort, [X]),
+      if
+        Tm >= 60000000 -> io:format("Time Limit Exceeded for ~w elements for merge sort~n", [N]), M2 = false;
+        true -> io:format("~8w elements : ~f seconds by merge sort~n", [N, Tm / 1000000]), M2 = true
+      end;
+    true ->
+      %io:format("Time Limit Exceeded for ~w elements for merge sort~n", [N]),
+      M2 = false
+  end,
+  if
+    Q -> {Tq, _} = timer:tc(assign2, qsort, [X]),
+      if
+        Tq >= 60000000 -> io:format("Time Limit(60s) Exceeded for ~w elements for quick sort~n", [N]), Q2 = false;
+        true -> io:format("~8w elements : ~f seconds by quick sort~n", [N, Tq / 1000000]), Q2 = true
+      end;
+    true ->
+      %io:format("Time Limit Exceeded for ~w elements for quick sort~n", [N]),
+      Q2 = false
+  end,
+  if
+    I -> {Ti, _} = timer:tc(assign2, isort, [X]),
+      if
+        Ti >= 60000000 -> io:format("Time Limit(60s) Exceeded for ~w elements for insertion sort~n", [N]), I2 = false;
+        true -> io:format("~8w elements : ~f seconds by insertion sort~n", [N, Ti / 1000000]), I2 = true
+      end;
+    true ->
+      %io:format("Time Limit Exceeded for ~w elements for insertion sort~n", [N]),
+      I2 = false
+  end,
+  if
+    B -> {Tb, _} = timer:tc(assign2, bsort, [X]),
+      if
+        Tb >= 60000000 -> io:format("Time Limit(60s) Exceeded for ~w elements for bubble sort~n", [N]), B2 = false;
+        true -> io:format("~8w elements : ~f seconds by bubble sort~n", [N, Tb / 1000000]), B2 = true
+      end;
+    true ->
+      %io:format("Time Limit Exceeded for ~w elements for bubble sort~n", [N]),
+      B2 = false
+  end,
+  if
+    S -> {Ts, _} = timer:tc(assign2, ssort, [X]),
+      if
+        Ts >= 60000000 -> io:format("Time Limit(60s) Exceeded for ~w elements for selection sort~n", [N]), S2 = false;
+        true -> io:format("~8w elements : ~f seconds by selection sort~n", [N, Ts / 1000000]), S2 = true
+      end;
+    true ->
+      %io:format("Time Limit Exceeded for ~w elements for selection sort~n", [N]),
+      S2 = false
+  end,
+  timer(N * 10, M2, Q2, I2, B2, S2).

@@ -111,11 +111,50 @@
 
 <tr>
 <td>timer</td>
-<td>(Function,Parameter)</td>
-<td>Returns time taken by given function and parameter in microseconds</td>
-</tr>
+<td>()</td>
+<td>Gives the sorting time for the different search algorithms</tr>
 
-
-
+<tr>
+<td>randList</td>
+<td>(No._Of_Elements)</td>
+<td>Returns a list containing N random elements.</tr>
 
 </table>
+
+**Time Taken**
+<pre>
+assign2:timer().
+       1 elements : 0.000000 seconds by merge sort
+       1 elements : 0.000000 seconds by quick sort
+       1 elements : 0.000000 seconds by insertion sort
+       1 elements : 0.000000 seconds by bubble sort
+       1 elements : 0.000000 seconds by selection sort
+      10 elements : 0.000000 seconds by merge sort
+      10 elements : 0.000000 seconds by quick sort
+      10 elements : 0.000000 seconds by insertion sort
+      10 elements : 0.000000 seconds by bubble sort
+      10 elements : 0.000000 seconds by selection sort
+     100 elements : 0.000000 seconds by merge sort
+     100 elements : 0.000000 seconds by quick sort
+     100 elements : 0.000000 seconds by insertion sort
+     100 elements : 0.000000 seconds by bubble sort
+     100 elements : 0.000000 seconds by selection sort
+    1000 elements : 0.000000 seconds by merge sort
+    1000 elements : 0.000000 seconds by quick sort
+    1000 elements : 0.016000 seconds by insertion sort
+    1000 elements : 0.719000 seconds by bubble sort
+    1000 elements : 0.765000 seconds by selection sort
+   10000 elements : 0.000000 seconds by merge sort
+   10000 elements : 0.031000 seconds by quick sort
+   10000 elements : 1.297000 seconds by insertion sort
+Time Limit(60s) Exceeded for 10000 elements for bubble sort
+Time Limit(60s) Exceeded for 10000 elements for selection sort
+  100000 elements : 0.109000 seconds by merge sort
+  100000 elements : 3.094002 seconds by quick sort
+Time Limit(60s) Exceeded for 100000 elements for insertion sort
+ 1000000 elements : 1.577997 seconds by merge sort
+Time Limit(60s) Exceeded for 1000000 elements for quick sort
+Time Limit(60s) Exceeded for 1000000 elements for merge sort
+Limit Exceeded 100000000 > 10000000
+
+</pre>
