@@ -5,20 +5,30 @@ Name of module - assignment2
 Functions included in the module -
 
 1.qsort - Implements the quick-sort algorithm.
+
 2.insort - Implements the insertion sort algorithm.
+
 3.bubsort - Implements the bubble sort algorithm.
+
 4.selsort - Implements the selection sort algorithm.
+
 5.mergesort - Implements the merge sort algorithm.
+
 6.unique - Returns the unique elements of a list.
+
 7.replicate - Takes two parameters n and x and returns a list 
   containing the value x n times.
+  
 8.reverse - Returns the reverse of the given list.
+
 9.zip - Takes two lists as parameters and returns a list of tuples, 
   where each tuple contains the i-th element from each of the 
   input lists. The returned list is truncated in length to the length 
   of the shortest argument sequence.
+  
 10.fibonacci_T - Returns n terms of the fibonacci sequence where   
   n is the given parameter using tail recursion.
+  
 11.fibo_NT - Returns n terms of the fibonacci sequence where 
 n is the given parameter without using tail recursion.
 
@@ -124,7 +134,7 @@ Merge Sort ->
 
 Efficiency of Fibonacci Algorithm-
 
-Using Tail Recursion - 
+Using Tail Recursion ->
 
 1 element - 0
 
@@ -153,7 +163,7 @@ Using Tail Recursion -
 100000 elements - >1 minute
 
 
-Without using Tail Recursion - 
+Without using Tail Recursion ->
 
 1 element - 0
 
