@@ -11,7 +11,7 @@
 -author("Praveen Gupta").
 %% API
 -export([unique/1, uniq/1, freq/2, replicate/2, rep/2, reverse/1, zip/2, fac/1, fact/1,
-  zipp/2, fib/1, bsort/1, isort/1, ssort/1, msort/1, merge/2, qsort/1, randList/1, timer/0]).
+  zipp/2, fib/1, fibb/1, fibTerm/1, fibTimer/0, bsort/1, isort/1, ssort/1, msort/1, merge/2, qsort/1, randList/1, sortTimer/0]).
 
 %Takes a List and returns the list without repetition of elements.
 unique(X) -> unique(X, []).
@@ -65,8 +65,22 @@ fac(N) -> N * fac(N - 1).
 fact(N) -> fact(N, 1).
 fact(0, F) -> F;
 fact(N, F) -> fact(N - 1, F * N).
-
 %Prints N elements of the fibonacci series.
+%%
+%%fibb(1) -> [1];
+%%fibb(2) -> [1, 1];
+%%fibb(N) -> fibb(N - 1) ++ [fibTerm(N)].
+
+fibTerm(1) -> 1;
+fibTerm(2) -> 1;
+fibTerm(N) -> fibTerm(N - 1) + fibTerm(N - 2).
+
+fibb(N) -> (fibb(N, 1, 0)).
+fibb(1, A, B) -> [A + B];
+fibb(N, A, B) -> C = A + B,
+  [C] ++ fibb(N - 1, B, C).
+
+%Prints N elements of the fibonacci series using tail recursion.
 fib(N) ->
   case N of
     1 -> [1];
@@ -76,7 +90,32 @@ fib(N) ->
 fib(2, A) -> A;
 fib(N, A) -> fib(N - 1, [hd(A) + hd(tl(A))] ++ A).
 
-%fibtime(N) -> timer:tc(assign2, fib, [N]).
+%Gives time taken by the fibonacci functions.
+fibTimer() -> fibTimer(1, true, true).
+fibTimer(N, _, _) when N > 100000 -> io:format("Limit reached ~w>100000 .~n",[N]);
+fibTimer(_, false, false) -> io:format("");
+fibTimer(N, Tail, NonTail) ->
+  if
+    Tail -> {T1, _} = timer:tc(assign2, fib, [N]),
+      if
+        T1 > 60000000 -> io:format("Time limit(60 sec) exceeded with Tail Recursion for ~9w elements.~n", [N]),
+          Tail2 = false;
+        true -> io:format("~9w elements : ~f seconds with Tail Recursion.~n", [N, T1 / 1000000]),
+          Tail2 = true
+      end;
+    true -> Tail2 = false
+  end,
+  if
+    NonTail -> {T2, _} = timer:tc(assign2, fibb, [N]),
+      if
+        T2 > 60000000 -> io:format("Time limit(60 sec) exceeded without Tail Recursion for ~9w elements.~n", [N]),
+          NonTail2 = false;
+        true -> io:format("~9w elements : ~f seconds without Tail Recursion.~n", [N, T2 / 1000000]),
+          NonTail2 = true
+      end;
+    true -> NonTail2 = false
+  end,
+  fibTimer(N * 2, Tail2, NonTail2).
 
 %Sorts the given list using bubble sort algorithm.
 bsort(List) -> bsort(List, [], []).
@@ -132,7 +171,6 @@ merge([X | XT], [Y | YT]) ->
 qsort([]) -> [];
 qsort([H | T]) -> qsort([X || X <- T, X =< H]) ++ [H] ++ qsort([X || X <- T, X > H]).
 
-
 %Returns a list containing N random elements.
 randList(N) -> randList(N, [], 0).
 randList(N, X, N) -> X;
@@ -150,9 +188,9 @@ randList(N, X, A) -> randList(N, X ++ [rand:uniform(100)], A + 1).
 %%  end.
 
 %Gives the sorting time for the different search algorithms
-timer() -> timer(1, true, true, true, true, true).
-timer(N, _, _, _, _, _) when N > 10000000 -> io:format("Limit Exceeded ~w > 10000000~n", [N]);
-timer(N, M, Q, I, B, S) -> X = randList(N),
+sortTimer() -> sortTimer(1, true, true, true, true, true).
+sortTimer(N, _, _, _, _, _) when N > 10000000 -> io:format("Limit Exceeded ~w > 10000000~n", [N]);
+sortTimer(N, M, Q, I, B, S) -> X = randList(N),
   if
     M -> {Tm, _} = timer:tc(assign2, msort, [X]),
       if
@@ -203,4 +241,4 @@ timer(N, M, Q, I, B, S) -> X = randList(N),
       %io:format("Time Limit Exceeded for ~w elements for selection sort~n", [N]),
       S2 = false
   end,
-  timer(N * 10, M2, Q2, I2, B2, S2).
+  sortTimer(N * 10, M2, Q2, I2, B2, S2).
