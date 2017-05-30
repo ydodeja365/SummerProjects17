@@ -68,9 +68,27 @@
 </tr>
 
 <tr>
-<td>fib</td>
+<td>fibb</td>
 <td>(No_Of_Terms)</td>
 <td>Prints N elements of the fibonacci series.</td>
+</tr>
+
+<tr>
+<td>fibTerm</td>
+<td>(N)</td>
+<td>Prints Nth term of the fibonacci series.</td>
+</tr>
+
+<tr>
+<td>fibTimer</td>
+<td>()</td>
+<td>Gives time taken by the fibonacci functions.</td>
+</tr>
+
+<tr>
+<td>fib</td>
+<td>(No_Of_Terms)</td>
+<td>Prints N elements of the fibonacci series using tail recursion.</td>
 </tr>
 
 <tr>
@@ -123,7 +141,7 @@
 
 **Time Taken**
 <pre>
-assign2:timer().
+assign2:sortTimer().
        1 elements : 0.000000 seconds by merge sort
        1 elements : 0.000000 seconds by quick sort
        1 elements : 0.000000 seconds by insertion sort
@@ -154,7 +172,46 @@ Time Limit(60s) Exceeded for 10000 elements for selection sort
 Time Limit(60s) Exceeded for 100000 elements for insertion sort
  1000000 elements : 1.577997 seconds by merge sort
 Time Limit(60s) Exceeded for 1000000 elements for quick sort
-Time Limit(60s) Exceeded for 1000000 elements for merge sort
+Time Limit(60s) Exceeded for 10000000 elements for merge sort
 Limit Exceeded 100000000 > 10000000
+
+=======================================================================
+
+assign2:fibTimer().
+        1 elements : 0.000000 seconds with Tail Recursion.
+        1 elements : 0.000000 seconds without Tail Recursion.
+        2 elements : 0.000000 seconds with Tail Recursion.
+        2 elements : 0.000000 seconds without Tail Recursion.
+        4 elements : 0.000000 seconds with Tail Recursion.
+        4 elements : 0.000000 seconds without Tail Recursion.
+        8 elements : 0.000000 seconds with Tail Recursion.
+        8 elements : 0.000000 seconds without Tail Recursion.
+       16 elements : 0.000000 seconds with Tail Recursion.
+       16 elements : 0.000000 seconds without Tail Recursion.
+       32 elements : 0.000000 seconds with Tail Recursion.
+       32 elements : 0.000000 seconds without Tail Recursion.
+       64 elements : 0.000000 seconds with Tail Recursion.
+       64 elements : 0.000000 seconds without Tail Recursion.
+      128 elements : 0.000000 seconds with Tail Recursion.
+      128 elements : 0.000000 seconds without Tail Recursion.
+      256 elements : 0.000000 seconds with Tail Recursion.
+      256 elements : 0.000000 seconds without Tail Recursion.
+      512 elements : 0.000000 seconds with Tail Recursion.
+      512 elements : 0.000000 seconds without Tail Recursion.
+     1024 elements : 0.000000 seconds with Tail Recursion.
+     1024 elements : 0.000000 seconds without Tail Recursion.
+     2048 elements : 0.000000 seconds with Tail Recursion.
+     2048 elements : 0.000000 seconds without Tail Recursion.
+     4096 elements : 0.000000 seconds with Tail Recursion.
+     4096 elements : 0.000000 seconds without Tail Recursion.
+     8192 elements : 0.000000 seconds with Tail Recursion.
+     8192 elements : 0.016000 seconds without Tail Recursion.
+    16384 elements : 0.015000 seconds with Tail Recursion.
+    16384 elements : 0.032000 seconds without Tail Recursion.
+    32768 elements : 0.093000 seconds with Tail Recursion.
+    32768 elements : 0.235000 seconds without Tail Recursion.
+    65536 elements : 0.562000 seconds with Tail Recursion.
+    65536 elements : 0.250000 seconds without Tail Recursion.
+Limit reached 131072>100000 .
 
 </pre>
