@@ -87,13 +87,13 @@ Time when N is 45 : 30802235
   
 Function: tail_fib
 
-Time when N is 1 : 0
-Time when N is 10 : 0
-Time when N is 100 : 1
-Time when N is 1000 : 39
-Time when N is 10000 : 1937
-Time when N is 100000 : 147196
-Time when N is 1000000 : 13640569
+Time when N is 1 : 2
+Time when N is 10 : 2
+Time when N is 100 : 9
+Time when N is 1000 : 207
+Time when N is 10000 : 11466
+Time when N is 100000 : 162452
+Time when N is 1000000 : 13350402
 
 Conclusion: Tail recursion is faster than non_tail recursion.
 
