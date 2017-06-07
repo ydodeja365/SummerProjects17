@@ -26,16 +26,16 @@ long long int fun (long long int N)
      return ans%1000000007;
 }
 
-long long int power (long long int a, long long int N, long long int p)
+long long int power (long long int base, long long int expo, long long int modulo)
     {
-    long long int result = 1;
-    while (N > 0)
+    long long int ans = 1;
+    while (expo > 0)
     {
-        if (N % 2 == 1)
-            result = (result * a) % p;
-        N = N>>1;
-        a = (a * a) % p;
+        if (expo % 2 == 1)
+            ans = (ans * base) % modulo;
+        expo = expo>>1;
+        base = (base * base) % modulo;
     }
-    return result;
+    return ans;
 }
 
