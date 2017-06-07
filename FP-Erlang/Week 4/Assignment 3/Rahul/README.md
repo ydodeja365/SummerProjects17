@@ -17,6 +17,11 @@ Given module contains an algorithm to calculate value of fun(N) where fun() is r
   
      return ans  
 
+The given pseudocode can be reduced to the following recursive equation -> fun(N) = fun(N-1) + 2 * fun(N-2)
+
+This is a linear recurrence equation and can be explicity defined in terms of N as follows ->  
+N = (-4 * (-1)^(N-1)) + (7 * (2)^(N-1))/3
+
 Efficiency of the algorithm :-
 
 
