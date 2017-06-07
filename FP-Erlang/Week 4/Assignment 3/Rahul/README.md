@@ -2,20 +2,20 @@ Assignment 3 -
 
 Given module contains an algorithm to calculate value of fun(N) where fun() is represented by the following pseudocode :-
 
-fun(N)   
+     fun(N)   
     
-    ans = 0  
+     ans = 0  
 
-    if (N == 1)  
+     if (N == 1)  
         return 1  
 
-    for i in [1,N]  
+     for i in [1,N]  
         if (i == 1 or i == N)  
             ans = ans + 3  
         else  
             ans = ans + fun(i - 1) + fun(N - i)  
   
-    return ans  
+     return ans  
 
 Efficiency of the algorithm :-
 
