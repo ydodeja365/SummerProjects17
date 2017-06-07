@@ -3,6 +3,7 @@ Assignment 3 -
 Given module contains an algorithm to calculate value of fun(N) where fun() is represented by the following pseudocode :-
 
 fun(N)   
+    
     ans = 0  
 
     if (N == 1)  
